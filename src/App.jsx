@@ -2,8 +2,8 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import "./AppStyles.css";
 import NavBar from "./components/NavBar";
-import Campus from "./components/Campus";
-import Student from "./components/Student";
+import Campuses from "./components/Campus";
+import Students from "./components/Student";
 import SingleStudent from "./components/SingleStudent";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router";
