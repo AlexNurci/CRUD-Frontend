@@ -2,8 +2,8 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import "./AppStyles.css";
 import NavBar from "./components/NavBar";
-import Campus from "./components/Campus";
-import Student from "./components/Student";
+import Campuses from "./components/Campuses";
+import Students from "./components/Students";
 import { BrowserRouter as Router, Routes, Route } from "react-router";
 
 const App = () => {
@@ -15,8 +15,8 @@ const App = () => {
         <img className="react-logo" src="/react-logo.svg" alt="React Logo" />
 
         <Routes>
-          <Route path="/campuses" element={<Campus />} />
-          <Route path="/students" element={<Student />} />
+          <Route path="/campuses" element={<Campuses />} />
+          <Route path="/students" element={<Students />} />
         </Routes>
       </div>
     </div>
