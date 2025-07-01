@@ -37,3 +37,5 @@ const singleCampus = ({ campus, fetchAllCampuses }) => {
     </div>
   );
 };
+
+export default singleCampus; 

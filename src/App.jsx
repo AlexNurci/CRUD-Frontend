@@ -5,6 +5,7 @@ import NavBar from "./components/NavBar";
 import Campuses from "./components/Campus";
 import Students from "./components/Student";
 import SingleStudent from "./components/SingleStudent";
+import singleCampus from "./components/singleCampus";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router";
 
