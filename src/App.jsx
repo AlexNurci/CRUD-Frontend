@@ -17,8 +17,8 @@ const App = () => {
         <img className="react-logo" src="/react-logo.svg" alt="React Logo" />
 
         <Routes>
-          <Route path="/campuses" element={<Campus />} />
-          <Route path="/students" element={<Student />} />
+          <Route path="/campuses" element={<Campuses />} />
+          <Route path="/students" element={<Students />} />
           <Route path="/students/:studentId" element={<SingleStudent />} />
           <Route path="/campuses/:campusId" element={<SingleCampus />} />
         </Routes>
