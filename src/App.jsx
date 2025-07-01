@@ -11,8 +11,17 @@ const App = () => {
       <div className="app">
         <h1>Hello React!</h1>
         <img className="react-logo" src="/react-logo.svg" alt="React Logo" />
-
         <Routes>{/* Currently, we don't have any routes defined */}</Routes>
+
+
+
+
+
+
+
+        {/* Can delete later the route i used for singlecampus in APP.jsx ; */}
+        <Route path="/campuses/:campusId" element={<SingleCampus />} />
+
       </div>
     </div>
   );
