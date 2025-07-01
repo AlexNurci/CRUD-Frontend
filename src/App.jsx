@@ -2,7 +2,11 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import "./AppStyles.css";
 import NavBar from "./components/NavBar";
-import { BrowserRouter as Router, Routes } from "react-router";
+import Campuses from "./components/Campus";
+import Students from "./components/Student";
+import SingleStudent from "./components/SingleStudent";
+
+import { BrowserRouter as Router, Routes, Route } from "react-router";
 
 const App = () => {
   return (
@@ -11,7 +15,13 @@ const App = () => {
       <div className="app">
         <h1>Hello React!</h1>
         <img className="react-logo" src="/react-logo.svg" alt="React Logo" />
-        <Routes>{/* Currently, we don't have any routes defined */}</Routes>
+
+        <Routes>
+          <Route path="/campuses" element={<Campuses />} />
+          <Route path="/students" element={<Students />} />
+          <Route path="/students/:studentId" element={<SingleStudent />} />
+          <Route path="/campuses/:campusId" element={<SingleCampus />} />
+        </Routes>
       </div>
     </div>
   );
