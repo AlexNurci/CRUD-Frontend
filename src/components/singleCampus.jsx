@@ -1,41 +1,48 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import axios from "axios";
 
-//display a single Camps...
-
-const singleCampus = ({ campus, fetchAllCampuses }) => {
-  const { id } = useParams();
-  const campusId = Number(id);
+const SingleCampus = () => {
+  const { campusId } = useParams();
+  const [campus, setCampus] = useState(null);
+   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchAllCampuses();
-  }, [fetchAllCampuses]);
+    const fetchCampus = async () => {
+      try {
+        const res = await axios.get(`http://localhost:8080/api/campuses/${campusId}`);
+        setCampus(res.data);
+      } catch (error) {
+        console.error("Error fetching campus:", error);
+      }finally{
+        setLoading(false);
+      }
+    };
+    fetchCampus();
+  }, [campusId]);
 
-  const selectedCampus = campus.find((campus) => campus.id === campusId);
-
-  if (!selectedCampus) {
-    return <p> Loading or campus not found. </p>;
-  }
+  if (loading) return <p>Loading student data...</p>;
+  if (!campus) return <p>Loading campus...</p>;
 
   return (
     <div>
-      <h2>{selectedCampus.name}</h2>
-      <img></img>
-      <h2>{selectedCampus.address}</h2>
-      <h2>{selectedCampus.description}</h2>
+      <h2>{campus.name}</h2>
+      <img src={campus.imageUrl} alt={campus.name} />
+      <h3>{campus.address}</h3>
+      <p>{campus.description}</p>
 
       <h3>Students</h3>
-      {selectedCampus.students && selectedCampus.students.length > 0 ? (
+      {campus.students && campus.students.length > 0 ? (
         <ul>
-          {selectedCampus.students.map((students) => (
-            <li key={students.id}>{students.name}</li>
+          {campus.students.map((student) => (
+            <li key={student.id}>{student.name}</li>
           ))}
         </ul>
       ) : (
-        <p> No students are currently enrolled in this campus. </p>
+        <p>No students are currently enrolled.</p>
       )}
     </div>
   );
 };
 
-export default singleCampus; 
+export default SingleCampus;
