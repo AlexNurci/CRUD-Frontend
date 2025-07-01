@@ -4,6 +4,8 @@ import "./AppStyles.css";
 import NavBar from "./components/NavBar";
 import Campus from "./components/Campus";
 import Student from "./components/Student";
+import SingleStudent from "./components/SingleStudent";
+
 import { BrowserRouter as Router, Routes, Route } from "react-router";
 
 const App = () => {
