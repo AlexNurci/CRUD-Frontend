@@ -1,19 +1,16 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-
 const AllCampuses = () => {
   const [campuses, setCampuses] = useState([
-     {
-    id: 1,
-    name: "Hardcoded Campus 1",
-    
-  },
-  {
-    id: 2,
-    name: "Hardcoded Campus 2",
-  
-  }
+    {
+      id: 1,
+      name: "Hardcoded Campus 1",
+    },
+    {
+      id: 2,
+      name: "Hardcoded Campus 2",
+    },
   ]);
 
   useEffect(() => {
@@ -26,7 +23,7 @@ const AllCampuses = () => {
   const handleDelete = async (campusId) => {
     try {
       await axios.delete(`/api/campuses/${campusId}`);
-    
+
       setCampuses((prev) => prev.filter((campus) => campus.id !== campusId));
     } catch (error) {
       console.error("Failed to delete campus:", error);
@@ -41,12 +38,14 @@ const AllCampuses = () => {
           <li key={campus.id}>
             <h3>{campus.name}</h3>
             {campus.imageUrl && (
-                <img>
+              <img>
                 src={campus.imageUrl}
-                alt={'${campus.name} campus'    }
-                </img>
+                alt={"${campus.name} campus"}
+              </img>
             )}
-            <button onClick={() => handleDelete(campus.id)}>Delete</button>
+            <button onClick={() => handleDelete(campus.id)}>
+              Delete Campus
+            </button>
           </li>
         ))}
       </ul>
