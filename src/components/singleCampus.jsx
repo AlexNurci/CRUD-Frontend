@@ -5,7 +5,7 @@ import axios from "axios";
 const SingleCampus = () => {
   const { campusId } = useParams();
   const [campus, setCampus] = useState(null);
-   const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchCampus = async () => {
