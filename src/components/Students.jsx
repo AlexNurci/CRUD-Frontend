@@ -3,27 +3,18 @@ import "./component.css";
 import axios from "axios";
 
 const AllStudents = () => {
-  const [students, setStudents] = useState([
-    {
-      id: 1,
-      name: "Hardcoded Student 1",
-    },
-    {
-      id: 2,
-      name: "Hardcoded Student 2",
-    },
-  ]);
+  const [students, setStudents] = useState([]);
 
   useEffect(() => {
     axios
-      .get("/api/students")
+      .get("http://localhost:8080/api/students")
       .then((response) => setStudents(response.data))
       .catch((err) => console.error(err));
   }, []);
 
   const handleDelete = async (studentId) => {
     try {
-      await axios.delete(`/api/students/${studentId}`);
+      await axios.delete(`http://localhost:8080/api/students/${studentId}`);
       setStudents((prev) => prev.filter((s) => s.id !== studentId));
     } catch (error) {
       console.error("Failed to delete student:", error);

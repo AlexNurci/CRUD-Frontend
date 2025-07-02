@@ -10,11 +10,13 @@ const SingleCampus = () => {
   useEffect(() => {
     const fetchCampus = async () => {
       try {
-        const res = await axios.get(`http://localhost:8080/api/campuses/${campusId}`);
+        const res = await axios.get(
+          `http://localhost:8080/api/campuses/${campusId}`
+        );
         setCampus(res.data);
       } catch (error) {
         console.error("Error fetching campus:", error);
-      }finally{
+      } finally {
         setLoading(false);
       }
     };
@@ -27,7 +29,10 @@ const SingleCampus = () => {
   return (
     <div>
       <h2>{campus.name}</h2>
-      <img src={campus.imageUrl} alt={campus.name} />
+      <img
+        src={campus.imageUrl || "https://via.placeholder.com/150"}
+        alt={campus.name}
+      />
       <h3>{campus.address}</h3>
       <p>{campus.description}</p>
 
