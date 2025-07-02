@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+
+// do we add image?
+
 const AddStudent = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
+  const [gpa, setGpa] = useState("");
   const [students, setStudents] = useState([]); 
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -14,12 +19,14 @@ const AddStudent = () => {
       const response = await axios.post("http://localhost:8080/api/students", {
         firstName,
         lastName,
+        gpa,
         email,
       });
 
       setStudents([...students, response.data]);
       setFirstName("");
       setLastName("");
+      setGpa("");
       setEmail("");
     } catch (error) {
       console.error("Failed to add student:", error);
@@ -41,6 +48,13 @@ const AddStudent = () => {
           placeholder="Last Name"
           value={lastName}
           onChange={(e) => setLastName(e.target.value)}
+          required
+        />
+        <br />
+         <input
+          placeholder="GPA"
+          value={gpa}
+          onChange={(e) => setGpa(e.target.value)}
           required
         />
         <br />

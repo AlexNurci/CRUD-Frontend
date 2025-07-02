@@ -27,7 +27,11 @@ const AllStudents = () => {
       <ul>
         {students.map((student) => (
           <li key={student.id}>
-            <h3>{student.name}</h3>
+            <h3>
+              {student.firstName} {student.lastName}
+            </h3>
+            <p> GPA: {student.gpa}</p>
+            <p>{student.email}</p>
             <button onClick={() => handleDelete(student.id)}>
               Delete Student
             </button>

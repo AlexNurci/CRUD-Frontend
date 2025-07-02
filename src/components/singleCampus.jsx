@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 
 const SingleCampus = () => {
@@ -29,23 +29,22 @@ const SingleCampus = () => {
   return (
     <div>
       <h2>{campus.name}</h2>
-      <img
-        src={campus.imageUrl || "https://via.placeholder.com/150"}
-        alt={campus.name}
-      />
-      <h3>{campus.address}</h3>
       <p>{campus.description}</p>
 
-      <h3>Students</h3>
-      {campus.students && campus.students.length > 0 ? (
-        <ul>
-          {campus.students.map((student) => (
-            <li key={student.id}>{student.name}</li>
-          ))}
-        </ul>
-      ) : (
-        <p>No students are currently enrolled.</p>
-      )}
+      <h3>Enrolled Students</h3>
+      <ul>
+        {campus.students && campus.students.length > 0 ? (
+          campus.students.map((student) => (
+            <li key={student.id}>
+              <Link to={`/students/${student.id}`}>
+                {student.firstName} {student.lastName}
+              </Link>
+            </li>
+          ))
+        ) : (
+          <p>No students enrolled.</p>
+        )}
+      </ul>
     </div>
   );
 };
