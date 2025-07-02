@@ -2,8 +2,8 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import "./AppStyles.css";
 import NavBar from "./components/NavBar";
-import Campuses from "./components/Campus";
-import Students from "./components/Student";
+import Campuses from "./components/Campuses";
+import Students from "./components/Students";
 import SingleStudent from "./components/SingleStudent";
 import SingleCampus from "./components/singleCampus";
 
