@@ -6,6 +6,8 @@ import Campuses from "./components/Campuses";
 import Students from "./components/Students";
 import SingleStudent from "./components/SingleStudent";
 import SingleCampus from "./components/singleCampus";
+import AddStudent from "./components/AddStudent";
+
 
 import { BrowserRouter as Router, Routes, Route } from "react-router";
 
@@ -22,6 +24,8 @@ const App = () => {
           <Route path="/students" element={<Students />} />
           <Route path="/students/:studentId" element={<SingleStudent />} />
           <Route path="/campuses/:campusId" element={<SingleCampus />} />
+          <Route path="/add-student" element={<AddStudent />} />
+
         </Routes>
       </div>
     </div>
