@@ -14,8 +14,8 @@ const App = () => {
     <div>
       <NavBar />
       <div className="app">
-        <h1>Hello React!</h1>
-        <img className="react-logo" src="/react-logo.svg" alt="React Logo" />
+        {/* <h1>Hello React!</h1>
+        <img className="react-logo" src="/react-logo.svg" alt="React Logo" /> */}
 
         <Routes>
           <Route path="/campuses" element={<Campuses />} />
