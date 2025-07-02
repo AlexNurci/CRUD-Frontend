@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./NavBarStyles.css";
 import { Link, NavLink } from "react-router-dom";
-import { AiFillHome } from "react-icons/ai";
+import { AiFillHome } from "react-icons/ai"; // npm install react-icons
 
 const NavBar = () => {
   const [dropOpen, setDropOpen] = useState(false);
