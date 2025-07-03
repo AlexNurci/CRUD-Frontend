@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./component.css";
 import axios from "axios";
+import { Link, NavLink } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router";
+import AddStudent from "./AddStudent";
 
 const AllStudents = () => {
   const [students, setStudents] = useState([]);
@@ -24,6 +27,10 @@ const AllStudents = () => {
   return (
     <div>
       <h2>All Students</h2>
+        <Routes>
+          <Route path="/add-student" element={<AddStudent />}/>
+        </Routes>
+        <NavLink to="/add-student">Add Student</NavLink>
       <ul>
         {students.map((student) => (
           <li key={student.id}>

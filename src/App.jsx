@@ -11,12 +11,18 @@ const App = () => {
     <div>
       <NavBar />
       <div className="app">
-        {/* <h1>Hello React!</h1>
-        <img className="react-logo" src="/react-logo.svg" alt="React Logo" /> */}
-
         <Routes>
+<<<<<<< HEAD
           <Route path="/campuses" element={<Campus />} />
           <Route path="/students" element={<Student />} />
+=======
+          <Route path="/campuses" element={<Campuses />} />
+          <Route path="/students" element={<Students />} />
+          <Route path="/students/:studentId" element={<SingleStudent />} />
+          <Route path="/campuses/:campusId" element={<SingleCampus />} />
+          <Route path="/add-student/" element={<AddStudent />} />
+          <Route path="/add-campus/" element={<AddCampus />}/>
+>>>>>>> Alex
         </Routes>
       </div>
     </div>

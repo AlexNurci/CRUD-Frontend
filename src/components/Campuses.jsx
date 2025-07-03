@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Link, NavLink } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router";
+import AddCampus from "./AddCampus";
 
 const AllCampuses = () => {
   const [campuses, setCampuses] = useState([]);
@@ -24,6 +27,10 @@ const AllCampuses = () => {
   return (
     <div>
       <h2>All Campuses</h2>
+        <Routes>
+          <Route path="/add-campus" element={<AddCampus />}/>
+        </Routes>
+        <NavLink to="/add-campus">Add Campus</NavLink>
       <ul>
         {campuses.map((campus) => (
           <li key={campus.id}>
@@ -31,7 +38,6 @@ const AllCampuses = () => {
             <p>{campus.address}</p>
             <p>{campus.students}</p>
             <p>{campus.description}</p>
-            <p></p>
             {campus.imageUrl && (
               <img src={campus.image} alt={`${campus.name} campus`} />
             )}

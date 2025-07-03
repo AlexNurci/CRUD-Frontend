@@ -1,16 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link, NavLink } from "react-router-dom";
-import { BrowserRouter as Router, Routes, Route } from "react-router";
 
 
 const AddCampus = () => {
   const [campusName, setCampusName] = useState("");
   const [address, setAddress] = useState("");
   const [students, setStudents] = useState(""); 
-  const [image, setImage] = useState("");
-  const [description, setDescription] = useState("");
   const [campuses, setCampuses] = useState([]);
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,17 +16,12 @@ const AddCampus = () => {
       const response = await axios.post("http://localhost:8080/api/campuses", {
         campusName,
         address,
-        students,
-        image,
-        description,
       });
 
       setCampuses([...campuses, response.data]);
       setCampusName("");
       setAddress("");
-      setStudents(""); 
-      setDescription("");
-      setImage("");
+      setStudents("");
     } catch (error) {
       console.error("Failed to add campus:", error);
     }
@@ -59,28 +51,13 @@ const AddCampus = () => {
           onChange={(e) => setStudents(e.target.value)}
           required
         />
-        <br />
-         <input
-          placeholder="Image URL"
-          value={image}
-          onChange={(e) => setImage(e.target.value)}
-          required
-        />
-        <br />
-         <input
-          placeholder="Description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          required
-        />
-        <br />
         <button type="submit">Submit</button>
       </form>
 
       <h3>New Campuses</h3>
       <ul>
         {campuses.map((s) => (
-          <li key={s.id}>{s.campusName} {s.address} ({s.students} {s.image} {s.description})</li>
+          <li key={s.id}>{s.campusName} {s.address} ({s.students})</li>
         ))}
       </ul>
     </div>
