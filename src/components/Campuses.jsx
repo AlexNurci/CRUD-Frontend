@@ -27,9 +27,13 @@ const AllCampuses = () => {
       <ul>
         {campuses.map((campus) => (
           <li key={campus.id}>
-            <h3>{campus.name}</h3>
+            <h3>{campus.campusName}</h3>
+            <p>{campus.address}</p>
+            <p>{campus.students}</p>
+            <p>{campus.description}</p>
+            <p></p>
             {campus.imageUrl && (
-              <img src={campus.imageUrl} alt={`${campus.name} campus`} />
+              <img src={campus.image} alt={`${campus.name} campus`} />
             )}
             <button onClick={() => handleDelete(campus.id)}>
               Delete Campus
