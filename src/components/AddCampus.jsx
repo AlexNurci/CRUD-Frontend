@@ -1,8 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link, NavLink } from "react-router-dom";
-import { BrowserRouter as Router, Routes, Route } from "react-router";
-
 
 const AddCampus = () => {
   const [campusName, setCampusName] = useState("");

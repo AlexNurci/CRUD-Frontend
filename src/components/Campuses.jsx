@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link, NavLink } from "react-router-dom";
-import { BrowserRouter as Router, Routes, Route } from "react-router";
+import {NavLink } from "react-router-dom";
+import { BrowserRouter as Routes, Route } from "react-router";
 import AddCampus from "./AddCampus";
 
 const AllCampuses = () => {

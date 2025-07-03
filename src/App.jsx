@@ -2,9 +2,13 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import "./AppStyles.css";
 import NavBar from "./components/NavBar";
-import Campus from "./components/Campus";
-import Student from "./components/Student";
+import Campuses from "./components/Campuses";
+import Students from "./components/Students";
 import { BrowserRouter as Router, Routes, Route } from "react-router";
+import SingleStudent from "./components/SingleStudent"
+import SingleCampus from "./components/singleCampus"
+import AddCampus from "./components/AddCampus";
+import AddStudent from "./components/AddStudent";
 
 const App = () => {
   return (
@@ -12,17 +16,12 @@ const App = () => {
       <NavBar />
       <div className="app">
         <Routes>
-<<<<<<< HEAD
-          <Route path="/campuses" element={<Campus />} />
-          <Route path="/students" element={<Student />} />
-=======
           <Route path="/campuses" element={<Campuses />} />
           <Route path="/students" element={<Students />} />
           <Route path="/students/:studentId" element={<SingleStudent />} />
           <Route path="/campuses/:campusId" element={<SingleCampus />} />
           <Route path="/add-student/" element={<AddStudent />} />
           <Route path="/add-campus/" element={<AddCampus />}/>
->>>>>>> Alex
         </Routes>
       </div>
     </div>
