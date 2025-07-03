@@ -15,8 +15,14 @@ const NavBar = () => {
       <li>
         <NavLink to="/students">Students</NavLink>
       </li>
+      <li>
+        <NavLink to="/add-student">Add Student</NavLink>
+      </li>
+      <li>
+        <NavLink to="/add-campus">Add Campus</NavLink>
+      </li>
     </ul>
-  </nav>;
+  </nav>; 
 };
 
 export default NavBar;

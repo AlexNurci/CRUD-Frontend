@@ -4,6 +4,12 @@ import "./AppStyles.css";
 import NavBar from "./components/NavBar";
 import Campuses from "./components/Campuses";
 import Students from "./components/Students";
+import SingleStudent from "./components/SingleStudent";
+import SingleCampus from "./components/singleCampus";
+import AddStudent from "./components/AddStudent";
+import AddCampus from "./components/AddCampus";
+
+
 import { BrowserRouter as Router, Routes, Route } from "react-router";
 
 const App = () => {
@@ -11,12 +17,16 @@ const App = () => {
     <div>
       <NavBar />
       <div className="app">
-        <h1>Hello React!</h1>
-        <img className="react-logo" src="/react-logo.svg" alt="React Logo" />
+        {/* <h1>Hello React!</h1>
+        <img className="react-logo" src="/react-logo.svg" alt="React Logo" /> */}
 
         <Routes>
           <Route path="/campuses" element={<Campuses />} />
           <Route path="/students" element={<Students />} />
+          <Route path="/students/:studentId" element={<SingleStudent />} />
+          <Route path="/campuses/:campusId" element={<SingleCampus />} />
+          <Route path="/add-student" element={<AddStudent />} />
+          <Route path="/add-campus" element={<AddCampus />}/>
         </Routes>
       </div>
     </div>
