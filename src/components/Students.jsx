@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./component.css";
 import axios from "axios";
-import { Link, NavLink } from "react-router-dom";
-import { BrowserRouter as Router, Routes, Route } from "react-router";
+import { NavLink } from "react-router-dom";
+import { Routes, Route } from "react-router";
 import AddStudent from "./AddStudent";
 
 const AllStudents = () => {
