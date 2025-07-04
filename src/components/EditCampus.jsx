@@ -1,46 +1,53 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link, NavLink } from "react-router-dom";
-import { BrowserRouter as Router, Routes, Route } from "react-router";
-import { useNavigate } from "react-router";
+import { useParams } from "react-router-dom";
 
+const EditCampus = () => {
+  const { campusId } = useParams();
 
-const AddCampus = () => {
   const [campusName, setCampusName] = useState("");
   const [address, setAddress] = useState("");
-  const [students, setStudents] = useState(""); 
+  const [students, setStudents] = useState("");
   const [image, setImage] = useState("");
   const [description, setDescription] = useState("");
-  const [campuses, setCampuses] = useState([]);
-  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchCampus = async () => {
+      try {
+        const res = await axios.get(`http://localhost:8080/api/campuses/${campusId}`);
+        const campus = res.data;
+        setCampusName(campus.campusName);
+        setAddress(campus.address);
+        setStudents(campus.students);
+        setImage(campus.image);
+        setDescription(campus.description);
+      } catch (error) {
+        console.error("Error fetching campus:", error);
+      }
+    };
+    fetchCampus();
+  }, [campusId]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:8080/api/campuses", {
+      await axios.put(`http://localhost:8080/api/campuses/${campusId}`, {
         campusName,
         address,
         students,
         image,
         description,
       });
-
-      setCampuses([...campuses, response.data]);
-      setCampusName("");
-      setAddress("");
-      setStudents(""); 
-      setDescription("");
-      setImage("");
-      navigate("/campuses");
+      alert("Campus updated successfully!");
     } catch (error) {
-      console.error("Failed to add campus:", error);
+      console.error("Failed to update campus:", error);
     }
   };
 
   return (
     <div style={{ padding: "20px" }}>
-      <h2>Add a New Campus</h2>
+      <h2>Edit Campus</h2>
       <form onSubmit={handleSubmit}>
         <input
           placeholder="Campus Name"
@@ -56,38 +63,33 @@ const AddCampus = () => {
           required
         />
         <br />
-         <input
+        <input
+          type="number"
           placeholder="How many students"
           value={students}
           onChange={(e) => setStudents(e.target.value)}
           required
         />
         <br />
-         <input
+        <input
+          type="url"
           placeholder="Image URL"
           value={image}
           onChange={(e) => setImage(e.target.value)}
           required
         />
         <br />
-         <input
+        <input
           placeholder="Description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           required
         />
         <br />
-        <button type="submit">Submit</button>
+        <button type="submit">Update</button>
       </form>
-
-      <h3>New Campuses</h3>
-      <ul>
-        {campuses.map((s) => (
-          <li key={s.id}>{s.campusName} {s.address} ({s.students} {s.image} {s.description})</li>
-        ))}
-      </ul>
     </div>
   );
 };
 
-export default AddCampus;
+export default EditCampus;

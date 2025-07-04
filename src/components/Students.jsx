@@ -35,7 +35,7 @@ const AllStudents = () => {
         {students.map((student) => (
           <li key={student.id}>
             <h3>
-              {student.firstName} {student.lastName}
+              <NavLink to={`/students/${student.id}`}>{student.firstName} {student.lastName}</NavLink>
             </h3>
             <p> GPA: {student.gpa}</p>
             <p>{student.email}</p>

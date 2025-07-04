@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Link, NavLink } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 const AddStudent = () => {
   const [firstName, setFirstName] = useState("");
@@ -7,7 +9,7 @@ const AddStudent = () => {
   const [email, setEmail] = useState("");
   const [gpa, setGpa] = useState("");
   const [students, setStudents] = useState([]); 
-  
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,6 +27,7 @@ const AddStudent = () => {
       setLastName("");
       setGpa("");
       setEmail("");
+      navigate("/students");
     } catch (error) {
       console.error("Failed to add student:", error);
     }

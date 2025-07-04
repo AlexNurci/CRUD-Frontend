@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, NavLink } from "react-router-dom";
 import axios from "axios";
+import EditCampus from "./EditCampus";
+import { BrowserRouter as Router, Routes, Route } from "react-router";
 
 const SingleCampus = () => {
   const { campusId } = useParams();
@@ -28,23 +30,28 @@ const SingleCampus = () => {
 
   return (
     <div>
-      <h2>{campus.name}</h2>
+      <h2>{campus.campusName}</h2>
+      <p>{campus.address}</p>
+      <p>{campus.students}</p>
       <p>{campus.description}</p>
 
       <h3>Enrolled Students</h3>
       <ul>
-        {campus.students && campus.students.length > 0 ? (
-          campus.students.map((student) => (
-            <li key={student.id}>
-              <Link to={`/students/${student.id}`}>
-                {student.firstName} {student.lastName}
-              </Link>
-            </li>
-          ))
-        ) : (
-          <p>No students enrolled.</p>
-        )}
+        {(Array.isArray(campus.students)
+      ? campus.students                       
+      : Object.values(campus.students || {})) 
+    .map((student) => (
+      <li key={student.id}>
+        <NavLink to={`/students/${student.id}`}>
+          {student.firstName} {student.lastName}
+        </NavLink>
+      </li>
+    ))}
       </ul>
+        <Routes>
+          <Route path="/edit-campus/:campusId" element={<EditCampus />}/>
+        </Routes>
+      <NavLink to="/edit-campus/:campusId">Edit Campus</NavLink>
     </div>
   );
 };

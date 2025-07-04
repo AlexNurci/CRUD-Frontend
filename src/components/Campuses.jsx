@@ -34,13 +34,14 @@ const AllCampuses = () => {
       <ul>
         {campuses.map((campus) => (
           <li key={campus.id}>
-            <h3>{campus.campusName}</h3>
+            <h3><NavLink to={`/campuses/${campus.id}`}>{campus.campusName}</NavLink></h3>
             <p>{campus.address}</p>
             <p>{campus.students}</p>
             <p>{campus.description}</p>
-            {campus.imageUrl && (
+            {campus.image && (
               <img src={campus.image} alt={`${campus.name} campus`} />
             )}
+            <br></br>
             <button onClick={() => handleDelete(campus.id)}>
               Delete Campus
             </button>
