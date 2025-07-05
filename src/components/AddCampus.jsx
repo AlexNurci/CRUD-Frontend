@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link, NavLink } from "react-router-dom";
 import { BrowserRouter as Router, Routes, Route } from "react-router";
 import { useNavigate } from "react-router";
+import "./styles.css";
 
 
 const AddCampus = () => {
@@ -39,8 +40,10 @@ const AddCampus = () => {
   };
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h2>Add a New Campus</h2>
+    <>
+    <h2>Add a New Campus</h2>
+    <div>
+      <br></br>
       <form onSubmit={handleSubmit}>
         <input
           placeholder="Campus Name"
@@ -70,23 +73,18 @@ const AddCampus = () => {
           required
         />
         <br />
-         <input
+         <textarea
           placeholder="Description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           required
         />
         <br />
-        <button type="submit">Submit</button>
+        <br></br>
+        <button className="add" type="submit">Submit</button>
       </form>
-
-      <h3>New Campuses</h3>
-      <ul>
-        {campuses.map((s) => (
-          <li key={s.id}>{s.campusName} {s.address} ({s.students} {s.image} {s.description})</li>
-        ))}
-      </ul>
     </div>
+    </>
   );
 };
 

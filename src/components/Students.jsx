@@ -4,6 +4,7 @@ import axios from "axios";
 import { Link, NavLink } from "react-router-dom";
 import { BrowserRouter as Router, Routes, Route } from "react-router";
 import AddStudent from "./AddStudent";
+import "./styles.css";
 
 const AllStudents = () => {
   const [students, setStudents] = useState([]);
@@ -30,16 +31,20 @@ const AllStudents = () => {
         <Routes>
           <Route path="/add-student" element={<AddStudent />}/>
         </Routes>
-        <NavLink to="/add-student">Add Student</NavLink>
+        <br></br>
+        <NavLink className="add" to="/add-student">Add Student</NavLink>
       <ul>
         {students.map((student) => (
-          <li key={student.id}>
+          <li key={student.id} className="students">
+            <br></br>
             <h3>
-              <NavLink to={`/students/${student.id}`}>{student.firstName} {student.lastName}</NavLink>
+              <NavLink className="nav-link" to={`/students/${student.id}`}>{student.firstName} {student.lastName}</NavLink>
             </h3>
             <p> GPA: {student.gpa}</p>
             <p>{student.email}</p>
-            <button onClick={() => handleDelete(student.id)}>
+            <p>Campus: {student.campusId}</p>
+            <br></br>
+            <button className="deleteButton" onClick={() => handleDelete(student.id)}>
               Delete Student
             </button>
           </li>

@@ -8,6 +8,7 @@ const AddStudent = () => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [gpa, setGpa] = useState("");
+  const [CampusId, setCampus] = useState("");
   const [students, setStudents] = useState([]); 
   const navigate = useNavigate();
 
@@ -20,6 +21,7 @@ const AddStudent = () => {
         lastName,
         gpa,
         email,
+        CampusId,
       });
 
       setStudents([...students, response.data]);
@@ -27,6 +29,7 @@ const AddStudent = () => {
       setLastName("");
       setGpa("");
       setEmail("");
+      setCampus("");
       navigate("/students");
     } catch (error) {
       console.error("Failed to add student:", error);
@@ -36,6 +39,7 @@ const AddStudent = () => {
   return (
     <div style={{ padding: "20px" }}>
       <h2>Add a New Student</h2>
+      <br></br>
       <form onSubmit={handleSubmit}>
         <input
           placeholder="First Name"
@@ -66,15 +70,9 @@ const AddStudent = () => {
           type="email"
         />
         <br />
-        <button type="submit">Submit</button>
+        <br></br>
+        <button className="add" type="submit">Submit</button>
       </form>
-
-      <h3>New Students</h3>
-      <ul>
-        {students.map((s) => (
-          <li key={s.id}>{s.firstName} {s.lastName} ({s.email})</li>
-        ))}
-      </ul>
     </div>
   );
 };

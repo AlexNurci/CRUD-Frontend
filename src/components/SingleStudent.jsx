@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link, NavLink } from "react-router-dom";
 import axios from "axios";
+import "./styles.css";
 
 const SingleStudent = () => {
   const { studentId } = useParams();
@@ -26,7 +27,8 @@ const SingleStudent = () => {
   if (!student) return <p>Student not found.</p>;
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div className="single-student">
+      <br></br>
       <h2>{student.firstName} {student.lastName}</h2>
       <img
         src={student.imageUrl || "https://via.placeholder.com/150"}

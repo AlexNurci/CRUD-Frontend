@@ -9,6 +9,7 @@ import SingleCampus from "./components/singleCampus";
 import AddStudent from "./components/AddStudent";
 import AddCampus from "./components/AddCampus";
 import EditCampus from "./components/EditCampus";
+import Home from "./components/Home";
 
 
 import { BrowserRouter as Router, Routes, Route } from "react-router";
@@ -19,6 +20,7 @@ const App = () => {
       <NavBar />
       <div className="app">
         <Routes>
+          <Route path="/" element={<Home />} />
           <Route path="/campuses" element={<Campuses />} />
           <Route path="/students" element={<Students />} />
           <Route path="/students/:studentId" element={<SingleStudent />} />
