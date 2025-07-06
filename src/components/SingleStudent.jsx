@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams, Link, NavLink } from "react-router-dom";
 import axios from "axios";
 import "./styles.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router";
+import EditStudent from "./EditStudent";
 
 const SingleStudent = () => {
   const { studentId } = useParams();
@@ -46,6 +48,26 @@ const SingleStudent = () => {
       ) : (
         <p>This student is not enrolled in any campus.</p>
       )}
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+              <Routes>
+          <Route path={`/students/${student.id}/edit`} element={<EditStudent />}/>
+        </Routes>
+        <br></br>
+        <NavLink className="editButton" to={`/students/${student.id}/edit`}>Edit Student</NavLink>
     </div>
   );
 };

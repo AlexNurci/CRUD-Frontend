@@ -4,6 +4,7 @@ import axios from "axios";
 import { Link, NavLink } from "react-router-dom";
 import { BrowserRouter as Router, Routes, Route } from "react-router";
 import AddStudent from "./AddStudent";
+import EditStudent from "./EditStudent";
 import "./styles.css";
 
 const AllStudents = () => {
@@ -47,6 +48,12 @@ const AllStudents = () => {
             <button className="deleteButton" onClick={() => handleDelete(student.id)}>
               Delete Student
             </button>
+            <br></br>
+        <Routes>
+          <Route path={`/students/${student.id}/edit`} element={<EditStudent />}/>
+        </Routes>
+        <br></br>
+        <NavLink className="editButton" to={`/students/${student.id}/edit`}>Edit Student</NavLink>
           </li>
         ))}
       </ul>

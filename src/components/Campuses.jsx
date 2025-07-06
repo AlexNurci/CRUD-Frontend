@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link, NavLink } from "react-router-dom";
 import { BrowserRouter as Router, Routes, Route } from "react-router";
 import AddCampus from "./AddCampus";
+import EditCampus from "./EditCampus";
 import "./styles.css";
 
 const AllCampuses = () => {
@@ -23,7 +24,6 @@ const AllCampuses = () => {
     } catch (error) {
       console.error("Failed to delete campus:", error);
     }
-        console.log(campusId);
   };
 
   return (
@@ -50,6 +50,12 @@ const AllCampuses = () => {
             <button className="deleteButton" onClick={() => handleDelete(campus.id)}>
               Delete Campus
             </button>
+            <br></br>
+        <Routes>
+          <Route path={`/campuses/${campus.id}/edit`} element={<EditCampus />}/>
+        </Routes>
+        <br></br>
+        <NavLink className="editButton" to={`/campuses/${campus.id}/edit`}>Edit Campus</NavLink>
           </li>
         ))}
       </ul>

@@ -9,6 +9,7 @@ import SingleCampus from "./components/singleCampus";
 import AddStudent from "./components/AddStudent";
 import AddCampus from "./components/AddCampus";
 import EditCampus from "./components/EditCampus";
+import EditStudent from "./components/EditStudent";
 import Home from "./components/Home";
 
 
@@ -27,7 +28,8 @@ const App = () => {
           <Route path="/campuses/:campusId" element={<SingleCampus />} />
           <Route path="/add-student/" element={<AddStudent />} />
           <Route path="/add-campus/" element={<AddCampus />}/>
-          <Route path="/edit-campus/:campusId" element={<EditCampus />}/>
+          <Route path="/campuses/:campusId/edit" element={<EditCampus />} />
+          <Route path="/students/:studentId/edit" element={<EditStudent />} />
         </Routes>
       </div>
     </div>

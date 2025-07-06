@@ -1,96 +1,105 @@
 import React, { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useParams } from "react-router-dom";
-
-//Component not working, needs fixing
+import "./styles.css";
 
 const EditCampus = () => {
   const { campusId } = useParams();
+  const navigate = useNavigate();
 
-  const [campusName, setCampusName] = useState("");
-  const [address, setAddress] = useState("");
-  const [students, setStudents] = useState("");
-  const [image, setImage] = useState("");
-  const [description, setDescription] = useState("");
+  const [formData, setFormData] = useState({
+    campusName: "",
+    address: "",
+    students: "",
+    image: "",
+    description: "",
+  });
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchCampus = async () => {
+    (async () => {
       try {
-        const res = await axios.get(`http://localhost:8080/api/campuses/${campusId}`);
-        const campus = res.data;
-        setCampusName(campus.campusName);
-        setAddress(campus.address);
-        setStudents(campus.students);
-        setImage(campus.image);
-        setDescription(campus.description);
-      } catch (error) {
-        console.error("Error fetching campus:", error);
+        const { data } = await axios.get(
+          `http://localhost:8080/api/campuses/${campusId}`
+        );
+        setFormData({
+          campusName: data.campusName ?? "",
+          address:    data.address    ?? "",
+          students:   data.students   ?? "",
+          image:      data.image      ?? "",
+          description:data.description?? "",
+        });
+      } catch (err) {
+        console.error("Could not fetch campus:", err);
+      } finally {
+        setLoading(false);
       }
-    };
-    fetchCampus();
+    })();
   }, [campusId]);
+
+  const handleChange = ({ target: { name, value } }) =>
+    setFormData((prev) => ({ ...prev, [name]: value }));
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
-      await axios.put(`http://localhost:8080/api/campuses/${campusId}`, {
-        campusName,
-        address,
-        students,
-        image,
-        description,
-      });
-      alert("Campus updated successfully!");
-    } catch (error) {
-      console.error("Failed to update campus:", error);
+      await axios.put(
+        `http://localhost:8080/api/campuses/${campusId}`,
+        formData
+      );
+      navigate(`/campuses/${campusId}`);
+    } catch (err) {
+      console.error("Failed to update campus:", err);
     }
   };
 
+  if (loading) return <p>Loading campus…</p>;
+
   return (
-    <div style={{ padding: "20px" }}>
+    <>
       <h2>Edit Campus</h2>
       <form onSubmit={handleSubmit}>
         <input
+          name="campusName"
           placeholder="Campus Name"
-          value={campusName}
-          onChange={(e) => setCampusName(e.target.value)}
+          value={formData.campusName}
+          onChange={handleChange}
           required
         />
         <br />
         <input
+          name="address"
           placeholder="Address"
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}
+          value={formData.address}
+          onChange={handleChange}
           required
         />
         <br />
         <input
-          type="number"
+          name="students"
           placeholder="How many students"
-          value={students}
-          onChange={(e) => setStudents(e.target.value)}
+          value={formData.students}
+          onChange={handleChange}
           required
         />
         <br />
         <input
-          type="url"
+          name="image"
           placeholder="Image URL"
-          value={image}
-          onChange={(e) => setImage(e.target.value)}
-          required
+          value={formData.image}
+          onChange={handleChange}
         />
         <br />
-        <input
+        <textarea
+          name="description"
           placeholder="Description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          required
+          value={formData.description}
+          onChange={handleChange}
         />
         <br />
-        <button type="submit">Update</button>
+        <button className="add" type="save">Save</button>
       </form>
-    </div>
+    </>
   );
 };
 

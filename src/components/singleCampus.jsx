@@ -65,11 +65,11 @@ const SingleCampus = () => {
       <br></br>
       <br></br>
       <br></br>
-      <br></br> 
         <Routes>
-          <Route path="/edit-campus/:campusId" element={<EditCampus />}/>
+          <Route path={`/campuses/${campus.id}/edit`} element={<EditCampus />}/>
         </Routes>
-      <NavLink className="add" to="/edit-campus/:campusId">Edit Campus</NavLink>
+        <br></br>
+        <NavLink className="editButton" to={`/campuses/${campus.id}/edit`}>Edit Campus</NavLink>
     </div>
   );
 };

@@ -78,10 +78,10 @@ const AddStudent = () => {
           type="email"
         />
         <br />
-        <select>
+        <select value={CampusId} onChange={(e) => setCampus(e.target.value)}>
           <option value>Select Campus</option>
           {campuses.map((campus) => (
-            <option key={campus.id}>
+            <option key={campus.id} value={campus.id}>
               {campus.campusName}
             </option>
           ))}

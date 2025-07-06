@@ -1,6 +1,6 @@
 .campuses {
     width: 15rem;
-    height: 12rem;
+    height: 14rem;
     background-color: #5b4848;
     text-align: center;
     margin-top: 2rem;
@@ -11,7 +11,7 @@
 
 .students {
     width: 15rem;
-    height: 11rem;
+    height: 13rem;
     background-color: #5b4848;
     text-align: center;
     margin-top: 2rem;
@@ -80,4 +80,19 @@
     border-radius: 4px;
     background-color: #ff0000;
     color: #4c0d0d
+}
+
+.editButton {
+    display: inline-block;
+    border: none;
+    padding: 7px 9px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 4px;
+    background-color: #002fff;
+    color: #0d194c;
+    text-decoration: none;
 }
