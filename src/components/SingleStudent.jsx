@@ -31,7 +31,7 @@ const SingleStudent = () => {
       <br></br>
       <h2>{student.firstName} {student.lastName}</h2>
       <img
-        src={student.imageUrl || "https://via.placeholder.com/150"}
+        src={student.imageUrl}
         alt="Student"
         style={{ width: "150px", height: "150px", borderRadius: "50%", marginBottom: "15px" }}
       />

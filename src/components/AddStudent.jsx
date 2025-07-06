@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, NavLink } from "react-router-dom";
 import { useNavigate } from "react-router";
@@ -11,6 +11,14 @@ const AddStudent = () => {
   const [CampusId, setCampus] = useState("");
   const [students, setStudents] = useState([]); 
   const navigate = useNavigate();
+  const [campuses, setCampuses] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8080/api/campuses")
+      .then((response) => setCampuses(response.data))
+      .catch((err) => console.error(err));
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -69,6 +77,15 @@ const AddStudent = () => {
           required
           type="email"
         />
+        <br />
+        <select>
+          <option value>Select Campus</option>
+          {campuses.map((campus) => (
+            <option key={campus.id}>
+              {campus.campusName}
+            </option>
+          ))}
+        </select>
         <br />
         <br></br>
         <button className="add" type="submit">Submit</button>

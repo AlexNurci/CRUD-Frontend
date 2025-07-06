@@ -46,11 +46,11 @@ const SingleCampus = () => {
       ? campus.students                       
       : Object.values(campus.students || {})) 
     .map((student) => (
-      <li key={student.id}>
+      <div key={student.id}>
         <NavLink to={`/students/${student.id}`}>
           {student.firstName} {student.lastName}
         </NavLink>
-      </li>
+      </div>
     ))}
       </ul>
       <br></br>

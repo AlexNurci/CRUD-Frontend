@@ -23,6 +23,7 @@ const AllCampuses = () => {
     } catch (error) {
       console.error("Failed to delete campus:", error);
     }
+        console.log(campusId);
   };
 
   return (
@@ -54,6 +55,7 @@ const AllCampuses = () => {
       </ul>
     </div>
   );
+  
 };
 
 export default AllCampuses;
