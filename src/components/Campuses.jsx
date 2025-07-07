@@ -46,8 +46,7 @@ const AllCampuses = () => {
                   </NavLink>
                 </h3>
                 <p>Location: {campus.address}</p>
-                <p>{campus.students} students</p>
-
+                <p>Students: {Array.isArray(campus.students) ? campus.students.length : 0} </p>
                 <div className="description-box">
                   <p>{campus.description}</p>
                 </div>

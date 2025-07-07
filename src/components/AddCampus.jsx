@@ -20,7 +20,6 @@ const AddCampus = () => {
       const response = await axios.post("http://localhost:8080/api/campuses", {
         campusName,
         address,
-        students,
         image,
         description,
       });
@@ -28,7 +27,6 @@ const AddCampus = () => {
       setCampuses([...campuses, response.data]);
       setCampusName("");
       setAddress("");
-      setStudents(""); 
       setDescription("");
       setImage("");
       navigate("/campuses");
@@ -54,13 +52,6 @@ const AddCampus = () => {
           placeholder="Address"
           value={address}
           onChange={(e) => setAddress(e.target.value)}
-          required
-        />
-        <br />
-         <input
-          placeholder="How many students"
-          value={students}
-          onChange={(e) => setStudents(e.target.value)}
           required
         />
         <br />

@@ -25,7 +25,6 @@ const EditCampus = () => {
         setFormData({
           campusName: data.campusName ?? "",
           address:    data.address    ?? "",
-          students:   data.students   ?? "",
           image:      data.image      ?? "",
           description:data.description?? "",
         });
@@ -71,14 +70,6 @@ const EditCampus = () => {
           name="address"
           placeholder="Address"
           value={formData.address}
-          onChange={handleChange}
-          required
-        />
-        <br />
-        <input
-          name="students"
-          placeholder="How many students"
-          value={formData.students}
           onChange={handleChange}
           required
         />

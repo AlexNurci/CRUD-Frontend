@@ -35,24 +35,24 @@ const SingleCampus = () => {
       <h2>{campus.campusName}</h2>
       <br></br>
       <p>Location: {campus.address}</p>
-      <p>{campus.students} students</p>
       <br></br>
       <p>Abouts us: {campus.description}</p>
       <br></br>
       <br></br>
       <h3>Enrolled Students</h3>
-      <ul className="rem-list">
-        {(Array.isArray(campus.students)
-      ? campus.students                       
-      : Object.values(campus.students || {})) 
-    .map((student) => (
-      <div key={student.id}>
-        <NavLink to={`/students/${student.id}`}>
-          {student.firstName} {student.lastName}
-        </NavLink>
-      </div>
-    ))}
-      </ul>
+      {campus.students?.length ? (
+        <ul className="rem-list">
+          {campus.students.map((s) => (
+            <li key={s.id}>
+              <NavLink to={`/students/${s.id}`}>
+                {s.firstName} {s.lastName}
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>No students enrolled.</p>
+      )}
       <br></br>
       <br></br>
       <br></br>
