@@ -5,6 +5,7 @@ import "./styles.css";
 import { Routes, Route } from "react-router";
 import EditStudent from "./EditStudent";
 
+//working
 const SingleStudent = () => {
   const { studentId } = useParams();
   const [student, setStudent] = useState(null);
