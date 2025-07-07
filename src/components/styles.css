@@ -8,17 +8,19 @@
   text-decoration: none;
   list-style-type: none;
   overflow: hidden; /* hides any overflow */
+  padding-bottom: 20px;
 }
 
 .students {
-  width: 15rem;
-  height: 13rem;
+  width: 20rem;
+  min-height: 14rem; /* let content grow it */
   background-color: #5b4848;
   text-align: center;
   margin-top: 2rem;
   margin-bottom: 2rem;
   text-decoration: none;
   list-style-type: none;
+  overflow: hidden; /* hides any overflow */
 }
 
 .single-campus {
@@ -30,6 +32,7 @@
   margin-bottom: 2rem;
   text-decoration: none;
   list-style-type: none;
+  padding: 20px;
 }
 
 .single-student {
