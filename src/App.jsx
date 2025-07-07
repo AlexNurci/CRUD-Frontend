@@ -6,15 +6,12 @@ import Campuses from "./components/Campuses";
 import Students from "./components/Students";
 import SingleStudent from "./components/SingleStudent";
 import SingleCampus from "./components/singleCampus";
-<<<<<<< HEAD
-=======
 import AddStudent from "./components/AddStudent";
 import AddCampus from "./components/AddCampus";
 import EditCampus from "./components/EditCampus";
 import EditStudent from "./components/EditStudent";
 import Home from "./components/Home";
 
->>>>>>> 19e8a32345fc1432e71361b31f077cbc1a35dd23
 
 import { BrowserRouter as Router, Routes, Route } from "react-router";
 
@@ -24,21 +21,15 @@ const App = () => {
       <NavBar />
       <div className="app">
         <Routes>
-<<<<<<< HEAD
-=======
           <Route path="/" element={<Home />} />
->>>>>>> 19e8a32345fc1432e71361b31f077cbc1a35dd23
           <Route path="/campuses" element={<Campuses />} />
           <Route path="/students" element={<Students />} />
           <Route path="/students/:studentId" element={<SingleStudent />} />
           <Route path="/campuses/:campusId" element={<SingleCampus />} />
-<<<<<<< HEAD
-=======
           <Route path="/add-student/" element={<AddStudent />} />
           <Route path="/add-campus/" element={<AddCampus />}/>
           <Route path="/campuses/:campusId/edit" element={<EditCampus />} />
           <Route path="/students/:studentId/edit" element={<EditStudent />} />
->>>>>>> 19e8a32345fc1432e71361b31f077cbc1a35dd23
         </Routes>
       </div>
     </div>
