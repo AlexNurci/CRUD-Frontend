@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Link, NavLink } from "react-router-dom";
+import { useParams, NavLink } from "react-router-dom";
 import axios from "axios";
 import EditCampus from "./EditCampus";
-import { BrowserRouter as Router, Routes, Route } from "react-router";
+import { Routes, Route } from "react-router";
 import "./styles.css";
 
 const SingleCampus = () => {
