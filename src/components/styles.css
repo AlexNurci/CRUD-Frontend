@@ -1,0 +1,98 @@
+.campuses {
+    width: 15rem;
+    height: 14rem;
+    background-color: #5b4848;
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    text-decoration: none;
+    list-style-type: none;
+}
+
+.students {
+    width: 15rem;
+    height: 13rem;
+    background-color: #5b4848;
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    text-decoration: none;
+    list-style-type: none;
+}
+
+.single-campus {
+    width: 35rem;
+    height: 30rem;
+    background-color: #5b4848;
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    text-decoration: none;
+    list-style-type: none;
+}
+
+.single-student {
+    width: 35rem;
+    height: 30rem;
+    background-color: #5b4848;
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    text-decoration: none;
+    list-style-type: none;
+}
+
+.rem-list {
+    list-style-type: none;
+}
+
+.nav-link {
+    color: #000000;
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    color: #71ab85;
+}
+
+.add {
+    background-color: #4d5e53;
+    color: rgb(255, 255, 255);
+    padding: 7px 9px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    justify-content: center;
+}
+
+.deleteButton {
+    display: inline-block;
+    border: none;
+    padding: 7px 9px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 4px;
+    background-color: #ff0000;
+    color: #4c0d0d
+}
+
+.editButton {
+    display: inline-block;
+    border: none;
+    padding: 7px 9px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 4px;
+    background-color: #002fff;
+    color: #0d194c;
+    text-decoration: none;
+}

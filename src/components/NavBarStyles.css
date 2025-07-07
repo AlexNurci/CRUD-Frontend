@@ -6,6 +6,52 @@
   top: 0;
   z-index: 100;
   background-color: #4d5e53;
+<<<<<<< HEAD
+=======
+  height: 3.23rem;
+}
+
+.Home {
+  font-size: 1.8rem;
+  margin: 0.5rem;
+  font-weight: bold;
+  color: #000000;
+  text-decoration: none;
+}
+
+.navbar a {
+  display: block;
+  color: #ffffff;
+  padding: 0.5rem;
+  margin: 0 0.5rem;
+  text-decoration: none;
+  border-radius: 0.5rem;
+}
+
+nav ul {
+  display: flex;
+}
+
+nav ul li {
+  list-style: none;
+}
+
+nav ul li a {
+  display: block;
+  text-decoration: none;
+  color: white;
+  padding: 0.5rem;
+  margin: 0 0.5rem;
+  border-radius: 0.5rem;
+}
+
+nav a:hover {
+  background-color: #7ad0f5;
+}
+
+.active {
+  background-color: #8fbdd3;
+>>>>>>> 19e8a32345fc1432e71361b31f077cbc1a35dd23
 }
 
 .Home {

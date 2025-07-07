@@ -1,6 +1,14 @@
 import React, { useEffect, useState } from "react";
+<<<<<<< HEAD
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
+=======
+import { useParams, Link, NavLink } from "react-router-dom";
+import axios from "axios";
+import "./styles.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router";
+import EditStudent from "./EditStudent";
+>>>>>>> 19e8a32345fc1432e71361b31f077cbc1a35dd23
 
 const SingleStudent = () => {
   const { studentId } = useParams();
@@ -26,10 +34,18 @@ const SingleStudent = () => {
   if (!student) return <p>Student not found.</p>;
 
   return (
+<<<<<<< HEAD
     <div style={{ padding: "20px" }}>
       <h2>{student.firstName} {student.lastName}</h2>
       <img
         src={student.imageUrl || "https://via.placeholder.com/150"}
+=======
+    <div className="single-student">
+      <br></br>
+      <h2>{student.firstName} {student.lastName}</h2>
+      <img
+        src={student.imageUrl}
+>>>>>>> 19e8a32345fc1432e71361b31f077cbc1a35dd23
         alt="Student"
         style={{ width: "150px", height: "150px", borderRadius: "50%", marginBottom: "15px" }}
       />
@@ -44,6 +60,29 @@ const SingleStudent = () => {
       ) : (
         <p>This student is not enrolled in any campus.</p>
       )}
+<<<<<<< HEAD
+=======
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+              <Routes>
+          <Route path={`/students/${student.id}/edit`} element={<EditStudent />}/>
+        </Routes>
+        <br></br>
+        <NavLink className="editButton" to={`/students/${student.id}/edit`}>Edit Student</NavLink>
+>>>>>>> 19e8a32345fc1432e71361b31f077cbc1a35dd23
     </div>
   );
 };

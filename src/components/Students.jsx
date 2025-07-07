@@ -1,12 +1,64 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./component.css";
+import axios from "axios";
+import { Link, NavLink } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router";
+import AddStudent from "./AddStudent";
+import EditStudent from "./EditStudent";
+import "./styles.css";
 
-const Student = () => {
-    return (
-        <div className="student">
-            <h2>Student name</h2>
-        </div>
-    )
+const AllStudents = () => {
+  const [students, setStudents] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8080/api/students")
+      .then((response) => setStudents(response.data))
+      .catch((err) => console.error(err));
+  }, []);
+
+  const handleDelete = async (studentId) => {
+    try {
+      await axios.delete(`http://localhost:8080/api/students/${studentId}`);
+      setStudents((prev) => prev.filter((s) => s.id !== studentId));
+    } catch (error) {
+      console.error("Failed to delete student:", error);
+    }
+  };
+
+  return (
+    <div>
+      <h2>All Students</h2>
+        <Routes>
+          <Route path="/add-student" element={<AddStudent />}/>
+        </Routes>
+        <br></br>
+        <NavLink className="add" to="/add-student">Add Student</NavLink>
+      <ul>
+        {students.map((student) => (
+          <li key={student.id} className="students">
+            <br></br>
+            <h3>
+              <NavLink className="nav-link" to={`/students/${student.id}`}>{student.firstName} {student.lastName}</NavLink>
+            </h3>
+            <p> GPA: {student.gpa}</p>
+            <p>{student.email}</p>
+            <p>Campus: {student.campusId}</p>
+            <br></br>
+            <button className="deleteButton" onClick={() => handleDelete(student.id)}>
+              Delete Student
+            </button>
+            <br></br>
+        <Routes>
+          <Route path={`/students/${student.id}/edit`} element={<EditStudent />}/>
+        </Routes>
+        <br></br>
+        <NavLink className="editButton" to={`/students/${student.id}/edit`}>Edit Student</NavLink>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 };
 
-export default Student;
+export default AllStudents;
