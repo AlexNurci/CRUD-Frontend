@@ -3,6 +3,8 @@ import axios from "axios";
 import {NavLink } from "react-router-dom";
 import { Routes, Route } from "react-router";
 import AddCampus from "./AddCampus";
+import EditCampus from "./EditCampus";
+import "./styles.css";
 
 const AllCampuses = () => {
   const [campuses, setCampuses] = useState([]);
@@ -30,25 +32,36 @@ const AllCampuses = () => {
         <Routes>
           <Route path="/add-campus" element={<AddCampus />}/>
         </Routes>
-        <NavLink to="/add-campus">Add Campus</NavLink>
+        <br></br>
+        <NavLink className="add" to="/add-campus">Add Campus</NavLink>
       <ul>
         {campuses.map((campus) => (
-          <li key={campus.id}>
-            <h3>{campus.campusName}</h3>
-            <p>{campus.address}</p>
-            <p>{campus.students}</p>
+          <li key={campus.id} className="campuses">
+            <br></br>
+            <h3><NavLink className="nav-link" to={`/campuses/${campus.id}`}>{campus.campusName}</NavLink></h3>
+            <p>Location: {campus.address}</p>
+            <p>{campus.students} students</p>
             <p>{campus.description}</p>
-            {campus.imageUrl && (
+            {campus.image && (
               <img src={campus.image} alt={`${campus.name} campus`} />
             )}
-            <button onClick={() => handleDelete(campus.id)}>
+            <br></br>
+            <br></br>
+            <button className="deleteButton" onClick={() => handleDelete(campus.id)}>
               Delete Campus
             </button>
+            <br></br>
+        <Routes>
+          <Route path={`/campuses/${campus.id}/edit`} element={<EditCampus />}/>
+        </Routes>
+        <br></br>
+        <NavLink className="editButton" to={`/campuses/${campus.id}/edit`}>Edit Campus</NavLink>
           </li>
         ))}
       </ul>
     </div>
   );
+  
 };
 
 export default AllCampuses;

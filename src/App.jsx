@@ -4,6 +4,18 @@ import "./AppStyles.css";
 import NavBar from "./components/NavBar";
 import Campuses from "./components/Campuses";
 import Students from "./components/Students";
+<<<<<<< HEAD
+=======
+import SingleStudent from "./components/SingleStudent";
+import SingleCampus from "./components/singleCampus";
+import AddStudent from "./components/AddStudent";
+import AddCampus from "./components/AddCampus";
+import EditCampus from "./components/EditCampus";
+import EditStudent from "./components/EditStudent";
+import Home from "./components/Home";
+
+
+>>>>>>> origin/Alex
 import { BrowserRouter as Router, Routes, Route } from "react-router";
 import SingleStudent from "./components/SingleStudent"
 import SingleCampus from "./components/singleCampus"
@@ -16,12 +28,15 @@ const App = () => {
       <NavBar />
       <div className="app">
         <Routes>
+          <Route path="/" element={<Home />} />
           <Route path="/campuses" element={<Campuses />} />
           <Route path="/students" element={<Students />} />
           <Route path="/students/:studentId" element={<SingleStudent />} />
           <Route path="/campuses/:campusId" element={<SingleCampus />} />
           <Route path="/add-student/" element={<AddStudent />} />
           <Route path="/add-campus/" element={<AddCampus />}/>
+          <Route path="/campuses/:campusId/edit" element={<EditCampus />} />
+          <Route path="/students/:studentId/edit" element={<EditStudent />} />
         </Routes>
       </div>
     </div>
