@@ -11,7 +11,7 @@ import AddCampus from "./components/AddCampus";
 import EditCampus from "./components/EditCampus";
 import EditStudent from "./components/EditStudent";
 import Home from "./components/Home";
-
+//singleCampus is working, even if red
 
 import { BrowserRouter as Router, Routes, Route } from "react-router";
 
