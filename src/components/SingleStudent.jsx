@@ -8,6 +8,7 @@ import EditStudent from "./EditStudent";
 const SingleStudent = () => {
   const { studentId } = useParams();
   const [student, setStudent] = useState(null);
+  const [campuses, setCampuses] = useState("");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -25,8 +26,21 @@ const SingleStudent = () => {
     fetchStudent();
   }, [studentId]);
 
+  useEffect(() => {
+    if (student && !student.campus && student.CampusId) {
+      axios
+        .get(`http://localhost:8080/api/campuses/${student.CampusId}`)
+        .then((res) => setCampuses(res.data))
+        .catch((err) => console.error("Error fetching campus:", err));
+    } else {
+      setCampuses(null);
+    }
+  }, [student]);
+
   if (loading) return <p>Loading student data...</p>;
   if (!student) return <p>Student not found.</p>;
+
+  const campusToShow = student.campus || campuses;
 
   return (
     <div className="single-student">
@@ -40,13 +54,15 @@ const SingleStudent = () => {
       <p><strong>Email:</strong> {student.email}</p>
       <p><strong>GPA:</strong> {student.gpa ?? "N/A"}</p>
 
-      {student.campus ? (
+      {campusToShow ? (
         <p>
           <strong>Enrolled Campus:</strong>{" "}
-          <Link to={`/campuses/${student.campus.id}`}>{student.campus.name}</Link>
+          <Link to={`/campuses/${campusToShow.id}`}>
+            {campusToShow.campusName || campusToShow.name}
+          </Link>
         </p>
       ) : (
-        <p>This student is not enrolled in any campus.</p>
+        <p>No Campus</p>
       )}
       <br></br>
       <br></br>
@@ -63,7 +79,7 @@ const SingleStudent = () => {
       <br></br>
       <br></br>
       <br></br>
-              <Routes>
+        <Routes>
           <Route path={`/students/${student.id}/edit`} element={<EditStudent />}/>
         </Routes>
         <br></br>

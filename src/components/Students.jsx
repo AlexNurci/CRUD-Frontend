@@ -9,11 +9,19 @@ import "./styles.css";
 
 const AllStudents = () => {
   const [students, setStudents] = useState([]);
+  const [campuses, setCampuses] = useState([]);
 
   useEffect(() => {
     axios
       .get("http://localhost:8080/api/students")
       .then((response) => setStudents(response.data))
+      .catch((err) => console.error(err));
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8080/api/campuses`)
+      .then((response) => setCampuses(response.data))
       .catch((err) => console.error(err));
   }, []);
 
@@ -26,6 +34,12 @@ const AllStudents = () => {
     }
   };
 
+  const campusById = React.useMemo(() => {
+    const map = {};
+    campuses.forEach((c) => (map[c.id] = c));
+    return map;
+  }, [campuses]);
+
   return (
     <div>
       <h2>All Students</h2>
@@ -35,15 +49,16 @@ const AllStudents = () => {
         <br></br>
         <NavLink className="add" to="/add-student">Add Student</NavLink>
       <ul>
-        {students.map((student) => (
-          <li key={student.id} className="students">
+        {students.map((student) => {
+          const campus = campusById[student.CampusId];
+          return(<li key={student.id} className="students">
             <br></br>
             <h3>
               <NavLink className="nav-link" to={`/students/${student.id}`}>{student.firstName} {student.lastName}</NavLink>
             </h3>
             <p> GPA: {student.gpa}</p>
             <p>{student.email}</p>
-            <p>Campus: {student.campusId}</p>
+            <p>Campus: {campus ? campus.campusName : "Not assigned"}</p>
             <br></br>
             <button className="deleteButton" onClick={() => handleDelete(student.id)}>
               Delete Student
@@ -54,8 +69,8 @@ const AllStudents = () => {
         </Routes>
         <br></br>
         <NavLink className="editButton" to={`/students/${student.id}/edit`}>Edit Student</NavLink>
-          </li>
-        ))}
+          </li>);
+        })}
       </ul>
     </div>
   );
