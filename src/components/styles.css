@@ -103,4 +103,5 @@
   display: flex;
   gap: 1rem;
   justify-content: center;
+  padding: 15px;
 }
