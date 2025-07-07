@@ -9,7 +9,6 @@ const EditStudent = () => {
   const [email, setEmail] = useState("");
   const [gpa, setGpa] = useState("");
 
-  
   useEffect(() => {
     const fetchStudent = async () => {
       try {
@@ -27,8 +26,6 @@ const EditStudent = () => {
     fetchStudent();
   }, [studentId]);
 
-  
-  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
