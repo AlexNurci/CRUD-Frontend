@@ -4,8 +4,6 @@ import { Link, NavLink } from "react-router-dom";
 import { AiFillHome } from "react-icons/ai";
 
 const NavBar = () => {
-  // const [dropOpen, setDropOpen] = useState(false);
-
   return <nav className="navbar">
     <Link to="/" className="Home"><AiFillHome/></Link>
     <ul>
