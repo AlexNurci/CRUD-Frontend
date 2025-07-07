@@ -1,13 +1,13 @@
 .campuses {
   width: 20rem;
-  min-height: 14rem; /* let content grow it */
+  min-height: 14rem;
   background-color: #5b4848;
   text-align: center;
   margin-top: 2rem;
   margin-bottom: 2rem;
   text-decoration: none;
   list-style-type: none;
-  overflow: hidden; /* hides any overflow */
+  overflow: hidden;
 }
 
 .students {
