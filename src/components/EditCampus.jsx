@@ -20,7 +20,7 @@ const EditCampus = () => {
     (async () => {
       try {
         const { data } = await axios.get(
-          `http://localhost:8080/api/campuses/${campusId}`
+          `https://crud-backend-weld-seven.vercel.app/api/campuses/${campusId}`
         );
         setFormData({
           campusName: data.campusName ?? "",
@@ -43,7 +43,7 @@ const EditCampus = () => {
     e.preventDefault();
     try {
       await axios.put(
-        `http://localhost:8080/api/campuses/${campusId}`,
+        `https://crud-backend-weld-seven.vercel.app/api/campuses/${campusId}`,
         formData
       );
       navigate(`/campuses/${campusId}`);

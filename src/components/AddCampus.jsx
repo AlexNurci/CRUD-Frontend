@@ -17,7 +17,7 @@ const AddCampus = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:8080/api/campuses", {
+      const response = await axios.post("https://crud-backend-weld-seven.vercel.app/api/campuses", {
         campusName,
         address,
         image,

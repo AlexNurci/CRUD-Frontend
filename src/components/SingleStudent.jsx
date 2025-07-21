@@ -15,7 +15,7 @@ const SingleStudent = () => {
   useEffect(() => {
     const fetchStudent = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/api/students/${studentId}`);
+        const response = await axios.get(`https://crud-backend-weld-seven.vercel.app/api/students/${studentId}`);
         setStudent(response.data);
       } catch (error) {
         console.error("Error fetching student:", error);
@@ -30,7 +30,7 @@ const SingleStudent = () => {
   useEffect(() => {
     if (student && !student.campus && student.CampusId) {
       axios
-        .get(`http://localhost:8080/api/campuses/${student.CampusId}`)
+        .get(`https://crud-backend-weld-seven.vercel.app/api/campuses/${student.CampusId}`)
         .then((res) => setCampuses(res.data))
         .catch((err) => console.error("Error fetching campus:", err));
     } else {

@@ -13,21 +13,21 @@ const AllStudents = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/students")
+      .get("https://crud-backend-weld-seven.vercel.app/api/students")
       .then((response) => setStudents(response.data))
       .catch((err) => console.error(err));
   }, []);
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/api/campuses`)
+      .get(`https://crud-backend-weld-seven.vercel.app/api/campuses`)
       .then((response) => setCampuses(response.data))
       .catch((err) => console.error(err));
   }, []);
 
   const handleDelete = async (studentId) => {
     try {
-      await axios.delete(`http://localhost:8080/api/students/${studentId}`);
+      await axios.delete(`https://crud-backend-weld-seven.vercel.app/api/students/${studentId}`);
       setStudents((prev) => prev.filter((s) => s.id !== studentId));
     } catch (error) {
       console.error("Failed to delete student:", error);

@@ -15,9 +15,12 @@ const AddStudent = () => {
   const navigate = useNavigate();
   const [campuses, setCampuses] = useState([]);
 
+// const BASE_URL = process.env.API_URL || 'http://localhost:8080' 
+
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/campuses")
+      .get("https://crud-backend-weld-seven.vercel.app/api/campuses")
+      // .get(BASE_URL+"/api/campuses")
       .then((response) => setCampuses(response.data))
       .catch((err) => console.error(err));
   }, []);
@@ -26,7 +29,7 @@ const AddStudent = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:8080/api/students", {
+      const response = await axios.post("https://crud-backend-weld-seven.vercel.app/api/students", {
         firstName,
         lastName,
         gpa,

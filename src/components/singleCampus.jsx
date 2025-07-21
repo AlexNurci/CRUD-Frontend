@@ -14,7 +14,7 @@ const SingleCampus = () => {
     const fetchCampus = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:8080/api/campuses/${campusId}`
+          `https://crud-backend-weld-seven.vercel.app/api/campuses/${campusId}`
         );
         setCampus(res.data);
       } catch (error) {

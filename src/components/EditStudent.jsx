@@ -19,7 +19,7 @@ const EditStudent = () => {
     (async () => {
       try {
         const { data } = await axios.get(
-          `http://localhost:8080/api/students/${studentId}`
+          `https://crud-backend-weld-seven.vercel.app/api/students/${studentId}`
         );
         setFormData({
           firstName: data.firstName ?? "",
@@ -42,7 +42,7 @@ const EditStudent = () => {
     e.preventDefault();
     try {
       await axios.put(
-        `http://localhost:8080/api/students/${studentId}`,
+        `https://crud-backend-weld-seven.vercel.app/api/students/${studentId}`,
         formData
       );
       navigate(`/students/${studentId}`);

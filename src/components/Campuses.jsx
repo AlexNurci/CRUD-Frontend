@@ -10,14 +10,14 @@ const AllCampuses = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/campuses")
+      .get("https://crud-backend-weld-seven.vercel.app/api/campuses")
       .then((response) => setCampuses(response.data))
       .catch((err) => console.error(err));
   }, []);
 
   const handleDelete = async (campusId) => {
     try {
-      await axios.delete(`http://localhost:8080/api/campuses/${campusId}`);
+      await axios.delete(`https://crud-backend-weld-seven.vercel.app/api/campuses/${campusId}`);
 
       setCampuses((prev) => prev.filter((campus) => campus.id !== campusId));
     } catch (error) {

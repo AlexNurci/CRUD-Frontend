@@ -12,7 +12,7 @@ const EditStudent = () => {
   useEffect(() => {
     const fetchStudent = async () => {
       try {
-        const res = await axios.get(`http://localhost:8080/api/students/${studentId}`);
+        const res = await axios.get(`https://crud-backend-weld-seven.vercel.app/api/students/${studentId}`);
         const student = res.data;
         setFirstName(student.firstName);
         setLastName(student.lastName);
@@ -30,7 +30,7 @@ const EditStudent = () => {
     e.preventDefault();
 
     try {
-      await axios.put(`http://localhost:8080/api/students/${studentId}`, {
+      await axios.put(`https://crud-backend-weld-seven.vercel.app/api/students/${studentId}`, {
         firstName,
         lastName,
         email,
